@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+</style>
+</head>
+<body><div align="left">
+	<form action="HtmlServet" method="get">
+	<fieldset>
+	<legend>基本信息</legend>
+	<label for="name">姓&nbsp;&nbsp;名：</label>
+		<input type="text" name="name" id="name" readonly="readonly"><br><br>
+		<label for="pwd">密&nbsp;&nbsp;码：</label>
+		<input type="password" name="pwd" id="pwd" disabled="disabled"><br><br>
+		头&nbsp;&nbsp;像：<input type="file" ><br><br>
+		性&nbsp;&nbsp;别：<input type="radio" name="gender" value="man">男
+		<input type="radio" name="gender" value="woman">女<br><br>
+		</fieldset>
+		<fieldset><legend>详细信息</legend>
+		爱&nbsp;&nbsp;好：
+		
+		<input type="checkbox" name="pashan" value="ps">爬山 
+		<input type="checkbox" name="youshui" value="ys">游水<br><br>
+		省&nbsp;&nbsp;份:&nbsp;
+		<select name="provice" multiple="multiple">
+
+		<option value="wuhan" >武汉</option>
+		<option value="zhongxiang">钟祥</option>
+		</select>
+		<br><br>
+		<input type="image" name="img" src="img/1.jpg" onclick="alert('you are sb!!!')">
+		
+		<input type="submit" value="提交">&nbsp;&nbsp;
+		<input type="reset" value="重置">
+	</fieldset>
+	</form></div>
+</body>
+
+</html>
