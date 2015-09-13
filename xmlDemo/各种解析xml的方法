@@ -11,3 +11,51 @@ DOM方式获取文档的步骤
 9.通过DOM方式来解析xml中或默认把文档中的空格和回车符也加载到子节点中，所以在获取子节点的时候通过判断
 来剔除不需要的类型，当子节点类型是Node.ELEMENT_NODE类型才是我们需要的
 10.获取该节点下的所有的所有子节点的内容childNodes.item(j).getTextContent()
+
+SAX解析xml文档的步骤
+1.通过SAXParserFactory.newInstance()获得SAXParserFactory
+2.通过factory.newSAXParser()得到SAXParserl类型的parser
+3.想要通过sax解析xml必须传入一个继承DefaultHandler的类SAXParserHandler
+4.通过parser.parse("book.xml", handler)去解析xml文件然后在handler处理xml文件
+5.继承DefaultHandler需要覆盖父类的这么几个方法
+startElement  表示解析的开始
+endElement 	  表示解析的结束
+characters		解析xml文档中的内容  String value = new String(ch, start, length);则可以得到节点值
+startDocument	解析文档内容的开始
+endDocument		解析文档内容的结束
+
+JDOM解析
+1.创建一个SAXBuilder对象saxBuilder；
+2.创建一个输入流 将xml文件加载到输入流中FileInputStream("book.xml") in;
+3.通过saxBuilder的build方法，将输入流加载到saxBuilder中Document类型document对象
+4.通过document对象的document.getRootElement()获取Element rootElement
+5.通过rootElement.getChildren()获取根节点下的子节点的集合List<Element> bookList
+6.通过增强for循环来遍历元素for (Element book : bookList)
+7.解析book的属性集合book.getAttributes()来得到List<Attribute>类型attrList
+8.遍历for (Attribute attr : attrList)中的attr.getName()来获取属性名和attr.getValue()属性值
+9.通过book.getChildren()来获取所有的节点集合List<Element> bookChilds
+10.通过for (Element child : bookChilds)来遍历元素的名和值child.getValue()
+
+DOM4J解析mxl步骤
+1.得到SAXReader reader 对象
+2.通过reader对象的reader方法加载book.xml文件，获取document对象reader.read(new File("book.xml"))
+3.通过document对象获取跟节点document.getRootElement()来获取Element bookStore
+4.通过获取迭代器bookStore.elementIterator()来得到Iterator it
+5.遍历迭代器，获取根节点的信息while (it.hasNext())
+6.通过迭代来获取Element book
+7.通过book.attributes()来得到List<Attribute> bookAttrs
+8.遍历for (Attribute attr : bookAttrs)attr.getName()获得属性名和值
+9.通过book.elementIterator()来得到Iterator itt
+10.循环得到Element bookChild = (Element) itt.next()；
+11.bookChild.getName()得到节点名，bookChild.getStringValue()得到节点值
+
+
+
+
+
+
+
+
+
+
+

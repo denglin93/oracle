@@ -20,7 +20,7 @@ public class SAXParserHandler extends DefaultHandler {
 		// 调用父类的default
 		super.startElement(uri, localName, qName, attributes);
 		if ("book".equals(qName)) {
-			// 创建一个book对象
+			// 如果传过来的参数与所要解析的节点名称一样则开始解析创建一个book对象
 			book = new Book();
 			System.out.println("================一本书解析开始=================");
 			int num = attributes.getLength();
