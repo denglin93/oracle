@@ -1,0 +1,13 @@
+DOM方式获取文档的步骤
+1.首先获取DocumentBuilderFacotry对象
+2.创建DocumentBuilder对象
+3.通过DocumentBuilder加载xml文档得到document对象
+4.通过document.getElementsByTagName()来获取多个节点NodeList bookList
+5.通过bookList.item(i)遍历获取每一个book节点,得到Node类型的book
+6.通过book.getAttributes()来获取一个节点的所有属性集合得到NamedNodeMap类型attrs
+7.通过遍历attrs.item()方法获取某一个属性Node类型的node ，从而根据node.getNodeName()
+和node.getNodeValue()来获取节点名称和值
+8.通过book.getChildNodes()来获取所有的子节点返回NodeList类型的childNodes
+9.通过DOM方式来解析xml中或默认把文档中的空格和回车符也加载到子节点中，所以在获取子节点的时候通过判断
+来剔除不需要的类型，当子节点类型是Node.ELEMENT_NODE类型才是我们需要的
+10.获取该节点下的所有的所有子节点的内容childNodes.item(j).getTextContent()
