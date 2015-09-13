@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style type="text/css">
+.div1, .div2, .div3 {
+	float: left;
+	width: 33%;
+}
+
+.row {
+	width: 300px;
+}
+
+.row select {
+	overflow: hidden;
+	height: 100px;
+}
+
+.div1 select {
+	width: 80px;
+	list-style-type: none
+}
+
+.div3 select {
+	width: 80px;
+	list-style-type: none
+}
+</style>
+<script type="text/javascript">
+	function move(target) {
+		var lsel = document.getElementById("lsel");
+		var rsel = document.getElementById("rsel");
+		switch (target.innerHTML) {
+		case "Add&gt;":
+			while (lsel.selectedIndex != -1) {
+				var op = lsel.options[lsel.selectedIndex];
+				rsel.appendChild(op);
+			}
+			break;
+		case "&lt;remove":
+			while (rsel.selectedIndex != -1) {
+				var op = rsel.options[rsel.selectedIndex];
+				lsel.appendChild(op);
+			}
+			break;
+		case "addAll&gt;&gt;":
+			var ops = lsel.options;
+
+			for (var i = ops.length - 1; i >= 0; i--) {
+				rsel.appendChild(ops[i]);
+			}
+			break;
+		case "&lt;&lt;removeAll":
+			var ops = rsel.options;
+			for (var i = ops.length - 1; i >= 0; i--) {
+				lsel.appendChild(ops[i]);
+			}
+			break;
+		}
+	}
+</script>
+</head>
+<body>
+	<div class="row">
+		<div class="div1">
+			<select multiple="multiple" id="lsel">
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+				<option>4</option>
+			</select>
+		</div>
+		<div class="div2">
+			<button onclick="move(this)">Add&gt;</button>
+			<button onclick="move(this)">&lt;remove</button>
+			<button onclick="move(this)">addAll&gt;&gt;</button>
+			<button onclick="move(this)">&lt;&lt;removeAll</button>
+		</div>
+		<div class="div3">
+			<select multiple="multiple" id="rsel"></select>
+		</div>
+	</div>
+</body>
+</html>
