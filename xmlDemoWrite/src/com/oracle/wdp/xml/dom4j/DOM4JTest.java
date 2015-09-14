@@ -15,13 +15,11 @@ import com.oracle.wdp.xml.dom4j.entity.copy.Book;
 
 public class DOM4JTest {
 	private static List<Book> list = new ArrayList<Book>();
-
 	public static void main(String[] args) {
-
-		// 得到SAXReader reader 对象
+		// TODO Auto-generated method stub
+		//得到SAXReader reader 对象
 		SAXReader reader = new SAXReader();
-		try {// 通过reader对象的reader方法加载book.xml文件，获取document对象reader.read(new
-				// File("book.xml"))
+		try {// 通过reader对象的reader方法加载book.xml文件，获取document对象reader.read(new File("book.xml"))
 			Document document = reader.read(new File("book.xml"));
 			// 通过document对象获取跟节点document.getRootElement()来获取Element bookStore
 			Element bookStore = document.getRootElement();
@@ -31,7 +29,7 @@ public class DOM4JTest {
 			while (it.hasNext()) {
 				System.out.println("===============开始遍历某一本书================");
 				Book bookEntity = new Book();
-				// 通过迭代来获取Element book
+				//通过迭代来获取Element book
 				Element book = (Element) it.next();
 				List<Attribute> bookAttrs = book.attributes();
 				for (Attribute attr : bookAttrs) {
@@ -41,7 +39,7 @@ public class DOM4JTest {
 						bookEntity.setId(attr.getValue());
 					}
 				}
-				// 通过book.elementIterator()来得到Iterator itt
+				//通过book.elementIterator()来得到Iterator itt
 				Iterator itt = book.elementIterator();
 
 				while (itt.hasNext()) {
